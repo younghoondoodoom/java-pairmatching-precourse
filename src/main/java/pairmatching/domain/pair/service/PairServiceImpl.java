@@ -29,7 +29,8 @@ public class PairServiceImpl implements PairService {
 
     @Override
     public List<Pair> reMatch(List<Crew> crews, PairInformation pairInformation) {
-        return null;
+        pairRepository.removeByPairInformation(pairInformation);
+        return tryGetPairs(crews, pairInformation.getLevel());
     }
 
 
