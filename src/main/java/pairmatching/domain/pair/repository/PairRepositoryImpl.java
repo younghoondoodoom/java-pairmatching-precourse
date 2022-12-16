@@ -25,7 +25,11 @@ public class PairRepositoryImpl implements PairRepository {
 
     @Override
     public Optional<List<Pair>> findByPairInformation(PairInformation pairInformation) {
-        return Optional.of(pairDatabase.get(pairInformation));
+        List<Pair> pairs = pairDatabase.getOrDefault(pairInformation, null);
+        if (pairs == null) {
+            return Optional.empty();
+        }
+        return Optional.of(pairs);
     }
 
     @Override
@@ -37,7 +41,8 @@ public class PairRepositoryImpl implements PairRepository {
 
     @Override
     public List<Pair> save(List<Pair> pairs, PairInformation pairInformation) {
-        return pairDatabase.put(pairInformation, pairs);
+        pairDatabase.put(pairInformation, pairs);
+        return pairs;
     }
 
     @Override

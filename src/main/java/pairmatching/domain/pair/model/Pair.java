@@ -30,4 +30,14 @@ public class Pair {
     private static void addCrewLevelHistory(Level level, int idx, Crew crew, Crew[] crews) {
         IntStream.range(0, crews.length).filter(j -> idx != j).forEach(j -> crew.addLevelHistory(crews[j], level));
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(crews.get(0).getName());
+        for (int i = 1; i < crews.size(); i++) {
+            sb.append(" : ").append(crews.get(i).getName());
+        }
+        return sb.toString();
+    }
 }

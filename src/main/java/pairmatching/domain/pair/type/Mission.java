@@ -1,5 +1,9 @@
 package pairmatching.domain.pair.type;
 
+import java.util.Arrays;
+import pairmatching.domain.pair.exception.NoSuchLevelException;
+import pairmatching.domain.pair.exception.NoSuchMissionException;
+
 public enum Mission {
 
     CAR_RACE(Level.LEVEL1, "자동차경주"),
@@ -25,5 +29,10 @@ public enum Mission {
 
     public String getName() {
         return name;
+    }
+
+    public static Mission findByName(String name) {
+        return Arrays.stream(Mission.values()).filter(mission -> mission.name.equals(name)).findFirst()
+            .orElseThrow(NoSuchMissionException::new);
     }
 }

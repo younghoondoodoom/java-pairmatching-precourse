@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import pairmatching.domain.pair.exception.AlreadyPairedSameLevelException;
+import pairmatching.domain.pair.exception.MatchingFailureException;
 import pairmatching.domain.pair.exception.PairAlreadyExistException;
 import pairmatching.domain.pair.exception.PairNotFoundException;
 import pairmatching.domain.pair.model.Crew;
@@ -57,13 +58,13 @@ public class PairServiceImpl implements PairService {
                 count++;
             }
         }
-        throw new AlreadyPairedSameLevelException();
+        throw new MatchingFailureException();
     }
 
     private List<Pair> getPairs(List<Crew> crews, Level level) {
         List<Crew> shuffledCrews = Randoms.shuffle(crews);
         List<Pair> pairs = new ArrayList<>();
-        for (int i = 0; i < shuffledCrews.size() - 1; i++) {
+        for (int i = 0; i < shuffledCrews.size() - 1; i += 2) {
             if (shuffledCrews.size() % 2 == 1 && i == shuffledCrews.size() - 3) {
                 pairs.add(makePair(level, shuffledCrews.get(i), shuffledCrews.get(i + 1), shuffledCrews.get(i + 2)));
             }
