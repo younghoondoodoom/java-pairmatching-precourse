@@ -8,4 +8,6 @@ import pairmatching.domain.pair.model.PairInformation;
 public interface PairRepository {
 
     Optional<List<Pair>> findByPairInformation(PairInformation pairInformation);
+
+    void removeByPairInformation(PairInformation pairInformation);
 }

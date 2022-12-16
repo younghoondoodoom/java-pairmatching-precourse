@@ -27,4 +27,11 @@ public class PairRepositoryImpl implements PairRepository {
     public Optional<List<Pair>> findByPairInformation(PairInformation pairInformation) {
         return Optional.of(pairDatabase.get(pairInformation));
     }
+
+    @Override
+    public void removeByPairInformation(PairInformation pairInformation) {
+        try {
+            pairDatabase.remove(pairInformation);
+        } catch (NullPointerException ignored) {}
+    }
 }
