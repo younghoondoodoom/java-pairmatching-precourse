@@ -40,4 +40,9 @@ public class PairRepositoryImpl implements PairRepository {
         return pairDatabase.put(pairInformation, pairs);
     }
 
+    @Override
+    public void init() {
+        pairDatabase = new HashMap<>();
+    }
+
 }

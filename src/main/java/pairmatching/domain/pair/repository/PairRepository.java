@@ -12,4 +12,6 @@ public interface PairRepository {
     void removeByPairInformation(PairInformation pairInformation);
 
     List<Pair> save(List<Pair> pairs, PairInformation pairInformation);
+
+    void init();
 }

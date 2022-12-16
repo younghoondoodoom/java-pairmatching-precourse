@@ -42,6 +42,11 @@ public class PairServiceImpl implements PairService {
             .orElseThrow(PairNotFoundException::new);
     }
 
+    @Override
+    public void init() {
+        pairRepository.init();
+    }
+
 
     private List<Pair> tryGetPairs(List<Crew> crews, Level level) {
         int count = 0;
