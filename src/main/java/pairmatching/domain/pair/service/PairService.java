@@ -10,4 +10,6 @@ public interface PairService {
     List<Pair> match(List<Crew> crews, PairInformation pairInformation);
 
     List<Pair> reMatch(List<Crew> crews, PairInformation pairInformation);
+
+
 }
