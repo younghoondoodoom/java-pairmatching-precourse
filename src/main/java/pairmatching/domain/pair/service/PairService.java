@@ -11,5 +11,5 @@ public interface PairService {
 
     List<Pair> reMatch(List<Crew> crews, PairInformation pairInformation);
 
-
+    List<Pair> findPairs(PairInformation pairInformation);
 }

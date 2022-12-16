@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import pairmatching.domain.pair.exception.AlreadyPairedSameLevelException;
 import pairmatching.domain.pair.exception.PairAlreadyExistException;
+import pairmatching.domain.pair.exception.PairNotFoundException;
 import pairmatching.domain.pair.model.Crew;
 import pairmatching.domain.pair.model.Pair;
 import pairmatching.domain.pair.model.PairInformation;
@@ -20,7 +21,7 @@ public class PairServiceImpl implements PairService {
     }
 
     @Override
-    public List<Pair> match(List<Crew> crews,  PairInformation pairInformation) throws PairAlreadyExistException {
+    public List<Pair> match(List<Crew> crews, PairInformation pairInformation) throws PairAlreadyExistException {
         if (pairRepository.findByPairInformation(pairInformation).isPresent()) {
             throw new PairAlreadyExistException();
         }
@@ -31,6 +32,12 @@ public class PairServiceImpl implements PairService {
     public List<Pair> reMatch(List<Crew> crews, PairInformation pairInformation) {
         pairRepository.removeByPairInformation(pairInformation);
         return tryGetPairs(crews, pairInformation.getLevel());
+    }
+
+    @Override
+    public List<Pair> findPairs(PairInformation pairInformation) {
+        return pairRepository.findByPairInformation(pairInformation)
+            .orElseThrow(PairNotFoundException::new);
     }
 
 
