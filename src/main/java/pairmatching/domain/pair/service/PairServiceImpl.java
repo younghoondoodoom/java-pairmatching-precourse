@@ -25,13 +25,15 @@ public class PairServiceImpl implements PairService {
         if (pairRepository.findByPairInformation(pairInformation).isPresent()) {
             throw new PairAlreadyExistException();
         }
-        return tryGetPairs(crews, pairInformation.getLevel());
+        List<Pair> pairs = tryGetPairs(crews, pairInformation.getLevel());
+        return pairRepository.save(pairs, pairInformation);
     }
 
     @Override
     public List<Pair> reMatch(List<Crew> crews, PairInformation pairInformation) {
         pairRepository.removeByPairInformation(pairInformation);
-        return tryGetPairs(crews, pairInformation.getLevel());
+        List<Pair> pairs = tryGetPairs(crews, pairInformation.getLevel());
+        return pairRepository.save(pairs, pairInformation);
     }
 
     @Override
