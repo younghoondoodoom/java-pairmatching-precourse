@@ -10,4 +10,6 @@ public interface PairRepository {
     Optional<List<Pair>> findByPairInformation(PairInformation pairInformation);
 
     void removeByPairInformation(PairInformation pairInformation);
+
+    List<Pair> save(List<Pair> pairs, PairInformation pairInformation);
 }

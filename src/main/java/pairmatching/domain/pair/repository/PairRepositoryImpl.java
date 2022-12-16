@@ -34,4 +34,10 @@ public class PairRepositoryImpl implements PairRepository {
             pairDatabase.remove(pairInformation);
         } catch (NullPointerException ignored) {}
     }
+
+    @Override
+    public List<Pair> save(List<Pair> pairs, PairInformation pairInformation) {
+        return pairDatabase.put(pairInformation, pairs);
+    }
+
 }
