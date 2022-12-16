@@ -1,4 +1,4 @@
-package pairmatching.domain.validation.util;
+package pairmatching.domain.pair.validation.util;
 
 import java.util.Arrays;
 

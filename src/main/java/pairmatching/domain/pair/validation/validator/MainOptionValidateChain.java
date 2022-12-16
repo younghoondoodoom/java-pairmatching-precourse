@@ -1,10 +1,10 @@
-package pairmatching.domain.validation.validator;
+package pairmatching.domain.pair.validation.validator;
 
 import pairmatching.domain.pair.dto.InputValidationRequest;
 import pairmatching.domain.pair.dto.InputValidationResponse;
 import pairmatching.domain.pair.type.ValidationType;
-import pairmatching.domain.validation.InputValidationChain;
-import pairmatching.domain.validation.util.ValidateUtil;
+import pairmatching.domain.pair.validation.InputValidationChain;
+import pairmatching.domain.pair.validation.util.ValidateUtil;
 
 public class MainOptionValidateChain implements InputValidationChain {
 

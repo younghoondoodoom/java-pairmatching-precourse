@@ -1,4 +1,4 @@
-package pairmatching.domain.validation;
+package pairmatching.domain.pair.validation;
 
 import pairmatching.domain.pair.dto.InputValidationRequest;
 import pairmatching.domain.pair.dto.InputValidationResponse;
